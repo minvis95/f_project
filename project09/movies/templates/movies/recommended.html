@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Recommended</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for movie in randmovies %}
+    <div class="col">
+      <div class="card">
+        <a href="{% url 'movies:detail' movie.pk %}">
+          <img src="{{ movie.poster_path }}" class="card-img-top" alt="사진">
+        </a>
+        <div class="card-body">
+          <a href="{% url 'movies:detail' movie.pk %}">
+            <h5 class="card-title">{{ movie.title }}</h5>
+          </a>
+          <p class="card-text">{{ movie.content }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>  
+
+{% endblock %}
